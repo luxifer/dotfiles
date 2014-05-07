@@ -41,6 +41,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="vim"
 export GOPATH=~/apps/go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:~/.composer/vendor/bin
 
 # alias
 alias wtf="man"
