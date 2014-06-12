@@ -42,6 +42,7 @@ export EDITOR="vim"
 export GOPATH=~/apps/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.composer/vendor/bin
+export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
 
 # alias
 alias wtf="man"
@@ -49,5 +50,3 @@ alias godoc="godoc -http=:6060 -index=true -v=true -play=true"
 alias wow="git status"
 alias such="git"
 alias very="git"
-
-
