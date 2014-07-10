@@ -1,0 +1,13 @@
+[user]
+	name = Florent Viel
+	email = florent.viel69@gmail.com
+[push]
+	default = simple
+[branch]
+	autosetuprebase = always
+[core]
+	excludesfile = ~/.gitignore_global
+[color]
+	ui = true
+[alias]
+	branch-clean = !git remote prune origin && git branch --merged | grep -v \"\\*\" | grep -v \"^[[:space:]]*master$\" | xargs -n 1 git branch -d
