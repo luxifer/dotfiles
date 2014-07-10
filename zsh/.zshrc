@@ -43,6 +43,7 @@ export GOPATH=~/apps/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.composer/vendor/bin
 export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
+export ANSIBLE_HOSTS=~/ansible_hosts
 
 # alias
 alias wtf="man"
