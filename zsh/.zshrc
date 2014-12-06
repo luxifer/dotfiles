@@ -44,6 +44,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.composer/vendor/bin
 export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
 export ANSIBLE_HOSTS=~/ansible_hosts
+export DOCKER_HOST=tcp://192.168.59.103:2375
 
 # alias
 alias wtf="man"

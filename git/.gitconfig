@@ -11,3 +11,6 @@
 	ui = true
 [alias]
 	branch-clean = !git remote prune origin && git branch --merged | grep -v \"\\*\" | grep -v \"^[[:space:]]*master$\" | xargs -n 1 git branch -d
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
