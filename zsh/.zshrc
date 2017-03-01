@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="amuse"
+ZSH_THEME="honukai"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -32,7 +32,7 @@ ZSH_THEME="amuse"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git composer sublime symfony2 vagrant docker)
+plugins=(composer sublime symfony2 vagrant docker)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -44,7 +44,9 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.composer/vendor/bin
 export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
 export ANSIBLE_HOSTS=~/ansible_hosts
-export DOCKER_HOST=tcp://192.168.59.103:2375
+export ATLAS_TOKEN="FMA94_TXHbp5GJEwxLQUX-3rDyyUmU3t8ddGmvpxzXfzcgptssvJn9spgQSEToWcaqg"
+export AZURE_CERT_PATH=~/azure/management.pem
+export HOMEBREW_NO_ANALYTICS=1
 
 # alias
 alias wtf="man"
@@ -52,3 +54,6 @@ alias godoc="godoc -http=:6060 -index=true -v=true -play=true"
 alias wow="git status"
 alias such="git"
 alias very="git"
+alias meteo="curl http://wttr.in/Lyon -H 'Accept-Language: fr'"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
