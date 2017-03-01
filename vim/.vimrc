@@ -1,13 +1,21 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" init
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'fatih/vim-go'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'garyburd/go-explorer'
+Plugin 'Shougo/neosnippet.vim'
 
-" custom
-" Bundle 'git://github.com/Lokaltog/powerline.git', {'rtp': 'powerline/bindings/vim'}
-
+call vundle#end()
 filetype plugin indent on
+
+syntax on
+set number
+set background=dark
+let g:neocomplete#enable_at_startup = 1
+nmap <F8> :TagbarToggle<CR>
