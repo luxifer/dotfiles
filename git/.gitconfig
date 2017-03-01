@@ -1,16 +1,34 @@
 [user]
 	name = Florent Viel
-	email = florent.viel69@gmail.com
+	email = luxifer666@gmail.com
+	signingkey = CD96F2D3E0928DDE
 [push]
 	default = simple
 [branch]
 	autosetuprebase = always
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/florent/.gitignore_global
 [color]
 	ui = true
 [alias]
 	branch-clean = !git remote prune origin && git branch --merged | grep -v \"\\*\" | grep -v \"^[[:space:]]*master$\" | xargs -n 1 git branch -d
+	undo = "!f() { \\\n    git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; \\\n}; f"
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	gpgsign = true
