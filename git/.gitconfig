@@ -1,7 +1,7 @@
 [user]
 	name = Florent Viel
 	email = luxifer666@gmail.com
-	signingkey = CD96F2D3E0928DDE
+	signingkey = 078451B7D50313B5
 [push]
 	default = simple
 [branch]
