@@ -7,7 +7,7 @@
 [branch]
 	autosetuprebase = always
 [core]
-	excludesfile = /Users/florent/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [color]
 	ui = true
 [alias]

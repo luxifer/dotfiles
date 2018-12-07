@@ -39,10 +39,10 @@ source $ZSH/oh-my-zsh.sh
 
 # exports
 export EDITOR="vim"
-export GOPATH=~/apps/go
+export GOPATH=~/sentryo/golang
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.composer/vendor/bin
-export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
+export PATH=$PATH:~/.gem/ruby/2.5.0/bin
 export ANSIBLE_HOSTS=~/ansible_hosts
 export ATLAS_TOKEN="FMA94_TXHbp5GJEwxLQUX-3rDyyUmU3t8ddGmvpxzXfzcgptssvJn9spgQSEToWcaqg"
 export AZURE_CERT_PATH=~/azure/management.pem

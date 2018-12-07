@@ -6,10 +6,13 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'fatih/vim-go'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'garyburd/go-explorer'
-Plugin 'Shougo/neosnippet.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'vim-airline/vim-airline'
 
 call vundle#end()
 filetype plugin indent on
@@ -17,5 +20,13 @@ filetype plugin indent on
 syntax on
 set number
 set background=dark
-let g:neocomplete#enable_at_startup = 1
-nmap <F8> :TagbarToggle<CR>
+colorscheme solarized
+set mouse=a
+
+if !has('gui_running')
+	set t_Co=256
+endif
+
+map <C-o> :NERDTreeToggle<CR>
+map <C-p> :Files<CR>
+
