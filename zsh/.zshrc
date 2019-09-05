@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="amuse"
+ZSH_THEME="agnoster"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -32,21 +32,16 @@ ZSH_THEME="amuse"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(composer sublime symfony2 vagrant docker)
+plugins=(docker archlinux)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
 # exports
 export EDITOR="vim"
-export GOPATH=~/sentryo/golang
+export GOPATH=~/apps/go
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:~/.composer/vendor/bin
-export PATH=$PATH:~/.gem/ruby/2.5.0/bin
-export ANSIBLE_HOSTS=~/ansible_hosts
-export ATLAS_TOKEN="FMA94_TXHbp5GJEwxLQUX-3rDyyUmU3t8ddGmvpxzXfzcgptssvJn9spgQSEToWcaqg"
-export AZURE_CERT_PATH=~/azure/management.pem
-export HOMEBREW_NO_ANALYTICS=1
+export PATH=$PATH:~/.local/bin
 export GPG_TTY=$(tty)
 
 # alias
@@ -57,4 +52,8 @@ alias such="git"
 alias very="git"
 alias meteo="curl http://wttr.in/Lyon -H 'Accept-Language: fr'"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi

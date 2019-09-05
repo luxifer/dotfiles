@@ -19,14 +19,27 @@ filetype plugin indent on
 
 syntax on
 set number
-set background=dark
-colorscheme solarized
 set mouse=a
 
-if !has('gui_running')
-	set t_Co=256
-endif
+let g:solarized_termcolors=256
+set background=dark
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 map <C-o> :NERDTreeToggle<CR>
 map <C-p> :Files<CR>
 
+" Persistent undo handling
+set undofile
+" Put plugins and dictionaries in this dir (also on Windows)
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+   let myUndoDir = expand(vimDir . '/undodir')
+   " Create dirs
+   call system('mkdir ' . vimDir)
+   call system('mkdir ' . myUndoDir)
+   let &undodir = myUndoDir
+   set undofile
+endif
