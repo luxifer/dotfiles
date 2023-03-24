@@ -13,6 +13,7 @@
 [alias]
 	branch-clean = !git remote prune origin && git branch --merged | grep -v \"\\*\" | grep -v \"^[[:space:]]*master$\" | xargs -n 1 git branch -d
 	undo = "!f() { \\\n    git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; \\\n}; f"
+	safepush = push --force-with-lease
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
@@ -24,5 +25,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
-[commit]
-	gpgsign = true
+[pull]
+	rebase = true
