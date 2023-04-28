@@ -58,7 +58,7 @@ local function run_once(cmd_arr)
     end
 end
 
-run_once({ "setxkbmap -layout fr" }) -- entries must be separated by commas
+run_once({ "setxkbmap -layout us -variant intl" }) -- entries must be separated by commas
 
 -- This function implements the XDG autostart specification
 --[[
@@ -90,11 +90,11 @@ local themes = {
 local chosen_theme = themes[2]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "kitty"
+local terminal     = "alacritty"
 local editor       = os.getenv("EDITOR") or "vim"
-local gui_editor   = "gvim"
+local gui_editor   = "code"
 local browser      = "firefox"
-local guieditor    = "code-insiders"
+local guieditor    = "code"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "ᚡ", "ᚢ", "ᚣ", "ᚤ", "ᚥ" }
@@ -234,12 +234,12 @@ function scandir(directory, filter)
     return t
 end
 
-math.randomseed(os.time())
-local wp_path = os.getenv("HOME") .. "/Images/earthview/"
-local wp_filter = function(s) return string.match(s,"%.png$") or string.match(s,"%.jpg$") end
-local wp_files = scandir(wp_path, wp_filter)                                     
-local wp_index =  math.random( 1, #wp_files)
-beautiful.wallpaper = wp_path .. wp_files[wp_index]
+--math.randomseed(os.time())
+--local wp_path = os.getenv("HOME") .. "/Images/earthview/"
+--local wp_filter = function(s) return string.match(s,"%.png$") or string.match(s,"%.jpg$") end
+--local wp_files = scandir(wp_path, wp_filter)                                     
+--local wp_index =  math.random( 1, #wp_files)
+--beautiful.wallpaper = wp_path .. wp_files[wp_index]
 
 screen.connect_signal("property::geometry", function(s)
     -- Wallpaper

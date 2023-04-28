@@ -125,13 +125,6 @@ theme.cal = lain.widget.cal({
 })
 
 local pwd = ""
-awful.spawn.easy_async("gpg -dq " .. os.getenv("HOME") .. "/.imap_pwd.gpg", function(stdout, stderr, reason, code)
-    if code ~= 0 then
-        naughty.notify({ title = "GPG", text = stdout .. "\n" .. stderr })
-        return
-    end
-    pwd = stdout:gsub("%s+", "")
-end)
 
 local get_pwd = function()
     local try_again = false
@@ -140,30 +133,6 @@ local get_pwd = function()
     end
     return pwd, try_again
 end
-
--- Mail IMAP check
-theme.mail = lain.widget.imap({
-    timeout  = 180,
-    server   = "mail.corp.sentryo.net",
-    mail     = "fviel",
-    password = get_pwd,
-    settings = function()
-        mail  = ""
-        count = ""
-
-        mail_notification_preset = {
-            icon = helpers.icons_dir .. "mail.png",
-            position = "top_right"
-        }
-
-        if mailcount > 0 then
-            mail = markup.fontfg(theme.font, blue, "Mail ")
-            count = mailcount .. " "
-        end
-
-        widget:set_markup(markup(blue, mail) .. markup.font(theme.font, count))
-    end
-})
 
 -- Battery
 local baticon = wibox.widget.imagebox(theme.bat)
@@ -397,7 +366,6 @@ function theme.at_screen_connect(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             small_spr,
-            theme.mail.widget,
 	    bar_spr,
 	    netwidget,
 	    bar_spr,
