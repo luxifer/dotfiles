@@ -1,0 +1,84 @@
+(defwidget bar []
+  (centerbox :orientation "h"
+    (workspaces)
+    (music)
+    (sidestuff)))
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "start"
+       :spacing 10
+    (for ws in workspaces
+      (button :onclick "hyprctl dispatch workspace ${ws.id}" "${ws.name}"))))
+
+(defwidget music []
+  (box :class "music"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+    {music != "" ? " ${music}" : ""}))
+
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (box :class "network"
+      "${round(EWW_NET['wlp3s0'].NET_DOWN / 1024, 2)} kB/s  ${round(EWW_NET['wlp3s0'].NET_UP / 1024, 2)} kB/s")
+    (metric :icon ""
+            :value {EWW_CPU.avg}
+            :msg "CPU: ${round(EWW_CPU.avg, 1)} %")
+    (metric :icon ""
+            :value {EWW_RAM.used_mem_perc}
+            :msg "RAM: ${round(EWW_RAM.used_mem_perc, 1)} %")
+    (metric :icon ""
+            :value {EWW_DISK["/home"].used_perc}
+            :msg "/home: ${round(EWW_DISK['/home'].used_perc, 1)} %")
+    (metric :icon ""
+            :value {volume * 100}
+            :msg "Vol: ${volume * 100} %")
+    (box
+      (for bat in batts
+        (metric :icon {bat.icon}
+                :value {bat.capacity}
+                :msg "${bat.name}: ${bat.capacity} %")))
+    (label :class "clock"
+           :text time)
+    (button :onclick "sudo systemctl poweroff"
+            :tooltip "Shutdown" "")))
+
+(defwidget metric [icon value msg]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box :class "label" icon)
+    (scale :min 0
+           :max 101
+           :value value
+           :tooltip msg)))
+
+(defpoll workspaces :interval "1s"
+  "hyprctl workspaces -j | jq -r 'sort_by(.id)'")
+
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+
+(defpoll time :interval "10s"
+  "date '+%H:%M \ %d/%m/%Y'")
+
+(defpoll volume :interval "2s"
+  "scripts/getvol")
+
+(defpoll batts :interval "10s"
+  "scripts/getbattery")
+
+(defwindow bar
+  :monitor 0
+  :exclusive true
+  :stacking "fg"
+  :focusable false
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "10px"
+                      :anchor "top center")
+  (bar))

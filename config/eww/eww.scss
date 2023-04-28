@@ -1,0 +1,74 @@
+$base03: #002b36;
+$base02: #073642;
+$base01: #586e75;
+$base00: #657b83;
+$base0: #839496;
+$base1: #93a1a1;
+$base2: #eee8d5;
+$base3: #fdf6e3;
+$yellow: #b58900;
+$orange: #cb4b16;
+$red: #dc322f;
+$magenta: #d33682;
+$violet: #6c71c4;
+$blue: #268bd2;
+$cyan: #2aa198;
+$green: #859900;
+
+* {
+    all: unset; //Unsets everything so you can style everything from scratch
+}
+
+.bar {
+    background-color: $base03;
+    color: $base00;
+    padding: 2px;
+    border-bottom: 1px solid $blue;
+}
+
+button {
+    background-color: $base02;
+    color: $base01;
+    padding: 2px 7px;
+    border-radius: 5px;
+    margin: 2px;
+}
+
+button:hover {
+    background-color: $red;
+    color: $base2;
+}
+
+.metric scale trough highlight {
+    all: unset;
+    background-color: $red;
+    color: #000000;
+    border-radius: 10px;
+}
+
+.metric scale trough {
+    all: unset;
+    background-color: $base02;
+    border-radius: 50px;
+    min-height: 3px;
+    min-width: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+tooltip {
+    background-color: $base02;
+    color: $base3;
+    border-radius: 5px;
+    opacity: 0.9;
+}
+
+.network {
+    font-size: 0.9em;
+    margin: 0 10px;
+}
+
+.clock {
+    font-size: 0.9em;
+    margin: 0 10px;
+}

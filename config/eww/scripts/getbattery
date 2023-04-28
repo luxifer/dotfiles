@@ -1,0 +1,25 @@
+#!/bin/bash
+
+basePath=/sys/class/power_supply
+devices=$(ls -1 $basePath)
+json="[]"
+declare -A iconMap
+iconMap["Keychron K3"]=""
+iconMap["Magic Trackpad 2"]=""
+iconMap["5B10W139"]=""
+
+for dev in $devices; do
+	devType=$(cat $basePath/$dev/type)
+	if [ "$devType" != "Battery" ]; then
+		continue
+	fi
+	name=$dev
+	if [ -f "$basePath/$dev/model_name" ]; then
+		name=$(cat $basePath/$dev/model_name)
+	fi
+	if [ -f "$basePath/$dev/capacity" ]; then
+		capacity=$(cat $basePath/$dev/capacity)
+	fi
+	json=$(echo "$json" | jq -r --argjson cap "$capacity" --arg model "$name" --arg icon "${iconMap[$name]}" '. += [{name: $model, capacity: $cap, icon: $icon}]')
+done
+echo $json
