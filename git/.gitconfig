@@ -1,7 +1,6 @@
 [user]
 	name = Florent Viel
-	email = luxifer666@gmail.com
-	signingkey = 078451B7D50313B5
+	email = fviel@scaleway.com
 [push]
 	default = simple
 [branch]
@@ -27,3 +26,7 @@
 	required = true
 [pull]
 	rebase = true
+[url "git@gitlab.infra.online.net:"]
+	insteadOf = https://gitlab.infra.online.net/
+[init]
+	defaultBranch = main

@@ -5,6 +5,7 @@ source $ZSH/oh-my-zsh.sh
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 source $HOME/.cargo/env
+source /usr/share/nvm/init-nvm.sh
 
 # exports
 export EDITOR="vim"

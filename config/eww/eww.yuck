@@ -23,7 +23,9 @@
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
     (box :class "network"
-      "${round(EWW_NET['wlp3s0'].NET_DOWN / 1024, 2)} kB/s  ${round(EWW_NET['wlp3s0'].NET_UP / 1024, 2)} kB/s")
+      "${round(EWW_NET['eth0'].NET_DOWN / 1024, 2)} kB/s  ${round(EWW_NET['eth0'].NET_UP / 1024, 2)} kB/s")
+    (box :class "network"
+      " ${EWW_TEMPS.THINKPAD_CPU} °")
     (metric :icon ""
             :value {EWW_CPU.avg}
             :msg "CPU: ${round(EWW_CPU.avg, 1)} %")
@@ -36,11 +38,9 @@
     (metric :icon ""
             :value {volume * 100}
             :msg "Vol: ${volume * 100} %")
-    (box
-      (for bat in batts
-        (metric :icon {bat.icon}
-                :value {bat.capacity}
-                :msg "${bat.name}: ${bat.capacity} %")))
+    (metric :icon ""
+            :value {EWW_BATTERY["BAT0"].capacity}
+            :msg "Battery: ${EWW_BATTERY['BAT0'].capacity} %")
     (label :class "clock"
            :text time)
     (button :onclick "sudo systemctl poweroff"
@@ -67,9 +67,6 @@
 
 (defpoll volume :interval "2s"
   "scripts/getvol")
-
-(defpoll batts :interval "10s"
-  "scripts/getbattery")
 
 (defwindow bar
   :monitor 0
