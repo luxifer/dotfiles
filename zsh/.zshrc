@@ -13,6 +13,7 @@ export GOPATH=~/apps/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.pulumi/bin
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export GPG_TTY=$(tty)
 
 # alias

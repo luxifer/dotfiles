@@ -26,7 +26,7 @@
 	required = true
 [pull]
 	rebase = true
-[url "git@gitlab.infra.online.net:"]
-	insteadOf = https://gitlab.infra.online.net/
 [init]
 	defaultBranch = main
+[url "git@gitlab.infra.online.net:"]
+	insteadOf = https://gitlab.infra.online.net/
