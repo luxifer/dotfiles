@@ -23,7 +23,7 @@
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
     (box :class "network"
-      "${round(EWW_NET['eth0'].NET_DOWN / 1024, 2)} kB/s  ${round(EWW_NET['eth0'].NET_UP / 1024, 2)} kB/s")
+      "${round(EWW_NET['eth1'].NET_DOWN / 1024, 2)} kB/s  ${round(EWW_NET['eth1'].NET_UP / 1024, 2)} kB/s")
     (box :class "network"
       " ${EWW_TEMPS.THINKPAD_CPU} °")
     (metric :icon ""
