@@ -19,11 +19,19 @@ $green: #859900;
     all: unset; //Unsets everything so you can style everything from scratch
 }
 
-.bar {
+.border {
+    background: linear-gradient(45deg, $blue, $cyan);
+    border-radius: 7px;
+    margin: 10px 10px 0px;
+    padding: 2px;
+    box-shadow: 0px 0px 5px #ee1a1a1a;
+}
+
+.content {
     background-color: $base03;
     color: $base00;
-    padding: 2px;
-    border-bottom: 1px solid $blue;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 button {

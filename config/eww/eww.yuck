@@ -1,5 +1,6 @@
 (defwidget bar []
   (centerbox :orientation "h"
+             :class "content"
     (workspaces)
     (music)
     (sidestuff)))
@@ -18,12 +19,15 @@
        :orientation "h"
        :space-evenly false
        :halign "center"
-    {music != "" ? " ${music}" : ""}))
+    (label :truncate true
+           :limit-width 40
+      :text {music != "" ? "  ${music}" : ""}
+      :tooltip {music != "" ? "  ${music}" : ""})))
 
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
     (box :class "network"
-      "${round(EWW_NET['eth1'].NET_DOWN / 1024, 2)} kB/s  ${round(EWW_NET['eth1'].NET_UP / 1024, 2)} kB/s")
+      "${round(EWW_NET[current_iface].NET_DOWN / 1024, 2)} kB/s  ${round(EWW_NET[current_iface].NET_UP / 1024, 2)} kB/s")
     (box :class "network"
       " ${EWW_TEMPS.THINKPAD_CPU} °")
     (metric :icon ""
@@ -56,17 +60,24 @@
            :value value
            :tooltip msg)))
 
-(defpoll workspaces :interval "1s"
+(defpoll workspaces :interval "1s" :initial "[]"
   "hyprctl workspaces -j | jq -r 'sort_by(.id)'")
 
 (deflisten music :initial ""
   "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 
+(defpoll current_iface :interval "30s" :initial "eth0"
+  "scripts/getiface")
+
 (defpoll time :interval "10s"
   "date '+%H:%M \ %d/%m/%Y'")
 
-(defpoll volume :interval "2s"
+(defpoll volume :interval "2s" :initial 0
   "scripts/getvol")
+
+(defwidget border []
+  (box :class "border"
+    (bar)))
 
 (defwindow bar
   :monitor 0
@@ -78,4 +89,4 @@
                       :width "100%"
                       :height "10px"
                       :anchor "top center")
-  (bar))
+  (border))
