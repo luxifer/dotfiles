@@ -27,3 +27,6 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 # add Pulumi to the PATH
 export PATH=$PATH:$HOME/.pulumi/bin
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform

@@ -79,7 +79,7 @@ function __dagger_clear_perform_completion_once_result
     __dagger_debug ""
     __dagger_debug "========= clearing previously set __dagger_perform_completion_once_result variable =========="
     set --erase __dagger_perform_completion_once_result
-    __dagger_debug "Succesfully erased the variable __dagger_perform_completion_once_result"
+    __dagger_debug "Successfully erased the variable __dagger_perform_completion_once_result"
 end
 
 function __dagger_requires_order_preservation
