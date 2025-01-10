@@ -1,1 +1,1 @@
-alias gst='git status'
+abbr --add gst git status

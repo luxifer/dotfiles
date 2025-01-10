@@ -6,6 +6,9 @@ end
 set -Ux EDITOR vim
 set -Ux GOPATH ~/apps/go
 set -Ux REQUESTS_CA_BUNDLE /etc/ssl/certs/ca-certificates.crt
+set -Ux STOPIT 1
+set -Ux SHUTUP 1
+set -Ux GOAWAY 1
 fish_add_path $GOPATH/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/.pulumi/bin

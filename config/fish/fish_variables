@@ -1,8 +1,11 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:vim
+SETUVAR --export GOAWAY:1
 SETUVAR --export --path GOPATH:/home/fviel/apps/go
 SETUVAR --export REQUESTS_CA_BUNDLE:/etc/ssl/certs/ca\x2dcertificates\x2ecrt
+SETUVAR --export SHUTUP:1
+SETUVAR --export STOPIT:1
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
