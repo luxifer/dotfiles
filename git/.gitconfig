@@ -1,17 +1,19 @@
+[column]
+	ui = auto
 [user]
 	name = Florent Viel
 	email = fviel@scaleway.com
 [push]
 	default = simple
+	autoSetupRemote = true
+	followTags = true
 [branch]
 	autosetuprebase = always
+	sort = -committerdate
+[tag]
+	sort = version:refname
 [core]
 	excludesfile = ~/.gitignore_global
-	pager = delta
-[interactive]
-	diffFilter = delta --color-only
-[delta]
-	navigate = true
 [color]
 	ui = true
 [alias]
@@ -33,6 +35,26 @@
 	rebase = true
 [init]
 	defaultBranch = main
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[help]
+	autocorrect = prompt
+[rerere]
+	enabled = true
+	autoupdate = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+[merge]
+	conflictstyle = zdiff3
 [url "git@gitlab.infra.online.net:"]
 	insteadOf = https://gitlab.infra.online.net/
 [credential "https://github.com"]

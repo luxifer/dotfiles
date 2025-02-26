@@ -4,7 +4,6 @@ if status is-interactive
 end
 
 set -Ux EDITOR vim
-set -Ux GOPATH ~/apps/go
 set -Ux REQUESTS_CA_BUNDLE /etc/ssl/certs/ca-certificates.crt
 set -Ux STOPIT 1
 set -Ux SHUTUP 1
