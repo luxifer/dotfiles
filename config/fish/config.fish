@@ -9,7 +9,7 @@ set -Ux STOPIT 1
 set -Ux SHUTUP 1
 set -Ux GOAWAY 1
 fish_add_path /usr/local/go/bin
-fish_add_path $GOPATH/bin
+fish_add_path ~/go/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/.pulumi/bin
 fish_add_path ~/.poetry/bin
@@ -18,3 +18,10 @@ fish_add_path ~/.cargi/bin
 
 starship init fish | source
 direnv hook fish | source
+
+# pnpm
+set -gx PNPM_HOME "/home/fviel/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
